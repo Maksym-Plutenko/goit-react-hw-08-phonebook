@@ -5,8 +5,8 @@ import {
   selectIsLoading,
   selectError,
   selectFilteredContacts,
-} from '../../redux/selectors';
-import { fetchContacts } from 'redux/operations';
+} from '../../redux/tasks/selectors';
+import { fetchContacts } from 'redux/tasks/operations';
 import { Contact } from './Contact/Contact';
 
 import css from './ContactList.module.css';

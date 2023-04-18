@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setFilterStatus } from '../../redux/filterSlice';
+import { setFilterStatus } from '../../redux/tasks/filterSlice';
 
 import css from './Filter.module.css';
 
