@@ -1,10 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+
+import { selectIsLoggedIn } from 'redux/authorization/selectors';
 import { register } from '../redux/authorization/operations';
 
 import css from './index.module.css';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,21 +24,27 @@ const Register = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <>
+      {isLoggedIn ? (
+        <Navigate to="/contacts" />
+      ) : (
+        <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+          <label className={css.label}>
+            Username
+            <input type="text" name="name" />
+          </label>
+          <label className={css.label}>
+            Email
+            <input type="email" name="email" />
+          </label>
+          <label className={css.label}>
+            Password
+            <input type="password" name="password" />
+          </label>
+          <button type="submit">Register</button>
+        </form>
+      )}
+    </>
   );
 };
 
