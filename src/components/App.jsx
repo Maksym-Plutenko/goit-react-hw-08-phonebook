@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectIsRefreshing } from '../redux/authorization/selectors';
+import {refreshUser} from '../redux/authorization/operations';
+
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { Filter } from './Filter/Filter';
 // import { ContactList } from './ContactList/ContactList';
@@ -10,6 +16,13 @@ import { Contacts } from '../pages/Contacts';
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     // <div
     //   style={{
@@ -29,9 +42,9 @@ const App = () => {
     // </div>
 
 
-    // isRefreshing ? (
-    //   <b>Refreshing user...</b>
-    // ) : (
+    isRefreshing ? (
+      <b>Refreshing user...</b>
+    ) : (
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* <Route index element={<HomePage />} /> */}
@@ -40,7 +53,7 @@ const App = () => {
           <Route path="/contacts" element={<Contacts />} />
         </Route>
       </Routes>
-    // )
+    )
   );
 };
 
