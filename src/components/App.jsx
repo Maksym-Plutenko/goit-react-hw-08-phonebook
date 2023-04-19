@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectIsRefreshing } from '../redux/authorization/selectors';
-import {refreshUser} from '../redux/authorization/operations';
+import { refreshUser } from '../redux/authorization/operations';
 
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { Filter } from './Filter/Filter';
@@ -12,6 +12,7 @@ import { Layout } from './Layout/Layout';
 import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { Contacts } from '../pages/Contacts';
+import { HomePage } from '../pages/HomePage';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -41,13 +42,12 @@ const App = () => {
     //   <ContactList />
     // </div>
 
-
     isRefreshing ? (
       <b>Refreshing user...</b>
     ) : (
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<HomePage />} /> */}
+          <Route index element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contacts" element={<Contacts />} />

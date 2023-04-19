@@ -1,19 +1,33 @@
 import { Outlet, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import { selectIsLoggedIn } from '../../redux/authorization/selectors';
 import { UserMenu } from '../UserMenu/UserMenu';
 
 import css from './Layout.module.css';
 
 const Layout = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  console.log(isLoggedIn);
+
   return (
     <div>
       <nav>
-        {/* <Link to="/">Home</Link> */}
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/contacts">Contacts</Link>
+        <div>
+          <Link to="/">Home</Link>
+          {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+        </div>
+        {isLoggedIn ? (
+          <UserMenu />
+        ) : (
+          <div>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
+          </div>
+        )}
       </nav>
-      <UserMenu />
+
       <Outlet />
     </div>
   );
