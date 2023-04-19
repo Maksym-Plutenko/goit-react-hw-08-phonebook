@@ -28,7 +28,7 @@ const ContactList = () => {
       {error && <p>Warning! {error}</p>}
       {filteredContacts.map(elem => (
         <li key={elem.id} className={css.element}>
-          <Contact name={elem.name} phone={elem.phone} id={elem.id} />
+          <Contact name={elem.name} phone={elem.number} id={elem.id} />
         </li>
       ))}
     </ul>
