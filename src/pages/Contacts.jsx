@@ -7,6 +7,8 @@ import {ContactList} from '../components/ContactList/ContactList';
 
 import { selectIsLoggedIn } from 'redux/authorization/selectors';
 
+import css from './index.module.css';
+
 const Contacts = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -16,17 +18,17 @@ const Contacts = () => {
 
       <>
       {isLoggedIn ? (
-        <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
+        <div className={css.container}
+        // style={{
+        //   display: 'flex',
+        //   flexDirection: 'column',
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+        //   fontSize: 40,
+        //   color: '#010101',
+        // }}
         >
-        <h1>Phonebook</h1>
+        {/* <h1>Phonebook</h1> */}
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />

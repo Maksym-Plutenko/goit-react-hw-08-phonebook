@@ -1,6 +1,8 @@
+import css from './index.module.css';
+
 const HomePage = () => {
     return (
-        <p>It's Home, my Dudes!</p>
+        <p className={css.text}>It's Homepage, my Dudes!</p>
     );
 }
 
