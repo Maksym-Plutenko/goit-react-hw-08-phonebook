@@ -1,4 +1,4 @@
-import { lazy, useEffect, Suspense } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectIsRefreshing } from '../redux/authorization/selectors';
@@ -46,7 +46,7 @@ const App = () => {
     isRefreshing ? (
       <b>Refreshing user...</b>
     ) : (
-      <Suspense fallback={<div>Loading...</div>}>
+      
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -55,7 +55,7 @@ const App = () => {
             <Route path="/contacts" element={<Contacts />} />
           </Route>
         </Routes>
-      </Suspense>
+      
     )
   );
 };
