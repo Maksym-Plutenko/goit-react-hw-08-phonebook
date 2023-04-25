@@ -9,8 +9,6 @@ import css from './Layout.module.css';
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log(isLoggedIn);
-
   return (
     <div>
       <nav>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectIsRefreshing } from '../redux/authorization/selectors';
@@ -8,13 +8,14 @@ import { refreshUser } from '../redux/authorization/operations';
 // import { Filter } from './Filter/Filter';
 // import { ContactList } from './ContactList/ContactList';
 
-import { Layout } from './Layout/Layout';
-import { Register } from '../pages/Register';
-import { Login } from '../pages/Login';
-import { Contacts } from '../pages/Contacts';
-import { HomePage } from '../pages/HomePage';
-
 import { Routes, Route } from 'react-router-dom';
+
+import { Layout } from './Layout/Layout';
+
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+const HomePage = lazy(() => import('../pages/HomePage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,14 +46,16 @@ const App = () => {
     isRefreshing ? (
       <b>Refreshing user...</b>
     ) : (
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/contacts" element={<Contacts />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Route>
+        </Routes>
+      </Suspense>
     )
   );
 };
