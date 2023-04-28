@@ -24,7 +24,7 @@ const Register = () => {
   };
 
   return (
-    <>
+    <div className={css.container}>
       {isLoggedIn ? (
         <Navigate to="/contacts" />
       ) : (
@@ -41,10 +41,10 @@ const Register = () => {
             Password
             <input className={css.input} type="password" name="password" />
           </label>
-          <button type="submit">Register</button>
+          <button className={css.button} type="submit">Register</button>
         </form>
       )}
-    </>
+    </div>
   );
 };
 

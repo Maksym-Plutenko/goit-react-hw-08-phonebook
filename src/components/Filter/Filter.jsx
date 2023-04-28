@@ -18,7 +18,7 @@ const Filter = () => {
 
   return (
     <div className={css.container}>
-      <strong>Find contacts by name</strong>
+      <strong className={css.strong} >Find contacts by name</strong>
       <input
         id="filter"
         type="text"

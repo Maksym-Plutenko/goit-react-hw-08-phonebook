@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { BsFillBookFill } from "react-icons/bs";
+import { BsFillBookFill } from 'react-icons/bs';
 
 import { selectIsLoggedIn } from '../../redux/authorization/selectors';
 import { UserMenu } from '../UserMenu/UserMenu';
@@ -14,21 +14,39 @@ const Layout = () => {
   return (
     <div className={css.container}>
       <header className={css.header}>
-        <h1 className={css.title}> <BsFillBookFill className={css.icon} /> Phonebook</h1>
+        <h1 className={css.title}>
+          <BsFillBookFill className={css.icon} /> Phonebook
+        </h1>
         <nav className={css.navigation}>
-          <div className={css.subnavigation}>
-            <NavLink className={css.link} to="/">
-              Home
-            </NavLink>
-            {isLoggedIn && <NavLink className={css.link} to="/contacts">Contacts</NavLink>}
-          </div>
+          <ul className={css.subnavigation}>
+            <li>
+              <NavLink className={css.link} to="/">
+                Home
+              </NavLink>
+            </li>
+            {isLoggedIn && (
+              <li>
+                <NavLink className={css.link} to="/contacts">
+                  Contacts
+                </NavLink>
+              </li>
+            )}
+          </ul>
           {isLoggedIn ? (
             <UserMenu />
           ) : (
-            <div className={css.subnavigation}>
-              <NavLink className={css.link} to="/register">Register</NavLink>
-              <NavLink className={css.link} to="/login">Login</NavLink>
-            </div>
+            <ul className={css.subnavigation}>
+              <li>
+                <NavLink className={css.link} to="/register">
+                  Register
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={css.link} to="/login">
+                  Login
+                </NavLink>
+              </li>
+            </ul>
           )}
         </nav>
       </header>
