@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[983],{3983:function(e,t,a){a.r(t);var _=a(6009),n=a(3329);t.default=function(){return(0,n.jsx)("p",{className:_.Z.text,children:"Welcome to Phonebook, the app which makes contacts saving easy!"})}},6009:function(e,t){t.Z={container:"pages_container__xAkcw",h1:"pages_h1__pysNS",text:"pages_text__Iz+ye",form:"pages_form__EXjgv",label:"pages_label__jdIHB",input:"pages_input__YpYFN",button:"pages_button__eH5oD"}}}]);
+//# sourceMappingURL=983.44be0659.chunk.js.map
